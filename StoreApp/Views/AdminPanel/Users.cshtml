@@ -1,0 +1,121 @@
+﻿@model IEnumerable<StoreApp.Models.User>
+
+@{
+    ViewData["Title"] = "Users";
+    Layout = "~/Views/Shared/AdminPanelLayout.cshtml";
+}
+
+<head>
+    <script src="~/js/adminPanel/UserSearch.js"></script>
+</head>
+<style>
+    div {
+        text-align: right;
+    }
+</style>
+<h2>טבלת משתמשים</h2>
+
+<p>
+    <a asp-action="CreateUser">הוסף משתמש חדש</a>
+</p>
+<p>
+    <b>חיפוש משתמש</b>
+    <br /><br />
+    <input id="userId" type="number" value="" />
+    <input type="submit" id="usr-search" value="שלח" />
+    <input type="hidden" id="len" value="0" />
+
+
+
+</p>
+<p>
+    <b>חיפוש מתקדם עפ"י ID ותאריך הזמנה</b>
+</p>
+<p>
+    <label for="userId"><b>מס' משתמש:</b></label>
+    <input type="number" id="userId" value="" />
+    <br />
+    <br />
+    <label for="begin"><b>:תאריך התחלה</b></label>
+    <input type="date" id="begin" value="" />
+    <br />
+    <br />
+    <label for="end"><b>:תאריך סיום</b></label>
+    <input type="date" id="end" value="" />
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                מספר משתמש:
+            </th>
+            <th>
+                שם פרטי:
+            </th>
+            <th>
+                שם משפחה:
+            </th>
+            <th>
+                שם משתמש:
+            </th>
+            <th>
+                סיסמא:
+            </th>
+            <th>
+                אי-מייל:
+            </th>
+            <th>
+                מנהל:
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAdmin)
+            </td>
+            <td>
+                <a asp-action="EditUser" asp-route-id="@item.ID">ערוך פרטי משתמש</a> |
+                <a asp-action="UserDetails" asp-route-id="@item.ID">פרטי משתמש</a> |
+                <a asp-action="DeleteUser" asp-route-id="@item.ID">מחיקת משתמש</a>
+            </td>
+        </tr>
+}
+    </tbody>
+ </table>
+<br />
+<br />
+
+<div class="card">
+    <table class="table table-hover shopping-cart-wrap" id="productable">
+        <thead class="text-muted">
+            <tr id="col-1">
+                <th scope="col">User ID</th>
+                <th scope="col">User Name</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">E-mail</th>
+            </tr>
+        </thead>
+    </table>
+</div>

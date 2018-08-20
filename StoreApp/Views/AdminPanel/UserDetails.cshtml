@@ -1,0 +1,55 @@
+﻿@model StoreApp.Models.User
+@{
+    ViewData["Title"] = "Details";
+}
+<style>
+    div {
+        text-align: right;
+    }
+</style>
+<h2>פרטי משתמש</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            שם פרטי:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            שם משפחה:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            שם משתמש:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt>
+           סיסמא:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt>
+          אי-מייל:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mail)
+        </dd>
+        <dt>
+           האם מנהל:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsAdmin)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="EditUser" asp-route-id="@Model.ID">ערוך פרטים</a> |
+    <a asp-action="users">חזרה לרשימת משתמשים</a>
+</div>

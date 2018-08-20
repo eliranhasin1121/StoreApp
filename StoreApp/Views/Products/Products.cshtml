@@ -1,0 +1,68 @@
+﻿
+@{
+    var data = Model;
+    if (data.Count != 0)
+    {
+        ViewData["Title"] = data[0].ProductType;
+
+    }
+    else
+    {
+        ViewData["Title"] = "Generel";
+
+    }
+    Layout = "~/Views/Shared/ProductsLayout.cshtml";
+   
+}
+<link rel="stylesheet" href="~/css/bibaStyle.css">
+
+<center>
+    <div class="slidecontainer" style="padding: 15px">
+        <center>
+            <p style="padding: 15px">טווח מחירים: </p>
+        </center>
+        <center>
+            <input type="range" min="1" max="250" value="250" class="slider" id="myRange">
+            <p><strong>עד מחיר: </strong><span id="demo"></span></p>
+        </center>
+    </div>
+</center>
+
+<script>
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function () {
+        output.innerHTML = this.value;
+        window.location =  this.value;
+    }
+</script>
+
+
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        var name = item.ProductName;
+        var img = item.ImageURL;
+        var price = item.Price;
+        var productId = item.ID;
+        var type = item.ProductType;
+
+        <a href="productPage/@name">
+            <div class="col-md-3 text-center productCenter">
+                <img class="imgProductsPage"src="~/images/products/@type/@img">
+                <br>
+                <br>
+                @name - <strong> @price₪</strong>
+                <br>
+                <br>
+                <a class="cd-add-to-cart addToCartProductsPage" data-prodid=@productId data-price=@price data-productname="@name" data-image="&quot/images/products/@type/@img&quot">הוסף לעגלה</a>
+                <br />
+                <br />
+                <br />
+            </div>
+        </a>
+    }
+</div>

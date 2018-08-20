@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/LoginLayout.cshtml";
+    var data = ViewBag.Message;
+}
+    <span class="error" style="font-size : 16px; color:red;">
+        @data
+    </span>
+    <br />
+    <form class="login100-form validate-form" method="post">
+        <span class="login100-form-title p-b-26">
+            <span class="error" style="font-size : 16px; color:red;">
+                <br />
+            </span>
+            דף הרשמה לחנות האינטרנטית
+        </span>
+        <span class="login100-form-title p-b-48">
+            <img class="animated fadeInUp" src="~/images/logo.png" style="width : 150px; height: 40px;">
+        </span>
+
+        <div dir="rtl" class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+            <input class="input100" type="text" name="firstname">
+            <span class="focus-input100" data-placeholder="שם פרטי"></span>
+        </div>
+
+        <div dir="rtl" class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+            <input class="input100" type="text" name="lastname">
+            <span class="focus-input100" data-placeholder="שם משפחה"></span>
+        </div>
+
+        <div dir="rtl" class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+            <input class="input100" type="text" name="email">
+            <span class="focus-input100" data-placeholder="כתובת אימייל"></span>
+        </div>
+
+        <div dir="rtl" class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+            <input class="input100" type="date" name="bday">
+            <span class="focus-input100" data-placeholder="תאריך לידה"></span>
+        </div>
+
+        <div dir="rtl" class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
+            <input class="input100" type="text" name="username">
+            <span class="focus-input100" data-placeholder="שם משתמש"></span>
+        </div>
+
+        <div dir="rtl" class="wrap-input100 validate-input" data-validate="Enter password">
+            <span class="btn-show-pass">
+                <i class="zmdi zmdi-eye"></i>
+            </span>
+            <input class="input100" type="password" name="password">
+            <span class="focus-input100" data-placeholder="סיסמא"></span>
+        </div>
+
+        <div class="container-login100-form-btn">
+            <div class="wrap-login100-form-btn">
+                <div class="login100-form-bgbtn"></div>
+                <button class="login100-form-btn" style="font-size : 20px;" type="submit">
+                    התחבר
+                </button>
+            </div>
+        </div>
+    </form>

@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Milky";
+    Layout = "~/Views/Shared/ProductsLayout.cshtml";
+}
+<br />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        var name = item.ProductName;
+        var img = item.ImageURL;
+        var price = item.Price;
+        var productId = item.ID;
+        <div class="col-md-3 text-center">
+        <div class="animated fadeIn">
+            <img src="~/images/products/milky/@img" style="width:150px; height:150px">
+            <br>
+            <br>
+            @name - <strong> @price₪</strong>
+            <br>
+            <br>
+            <a href="#0" class="cd-add-to-cart" data-prodid=@productId data-price=@price data-productname="@name" data-image="&quot/images/products/Milky/@img&quot">הוסף לעגלה</a>
+            <br />
+            <br />
+            <br />
+        </div>
+        </div>
+    }
+</div>
+

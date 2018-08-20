@@ -1,0 +1,49 @@
+﻿@model StoreApp.Models.Supplier
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    div {
+        text-align: right;
+    }
+</style>
+<h2>מחיקת ספק</h2>
+<h3>האם אתה בטוח שאתה מעוניין למחוק את הספק?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            מספר ספק:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+        <dt>
+            שם ספק:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CompanyName)
+        </dd>
+        <dt>
+           מס' טלפון:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+          כתובת ספק:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+    </dl>
+
+    <form asp-action="DeleteSupplier">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="מחיקת ספק" class="btn btn-default" /> |
+        <a asp-action="suppliers">חזרה לרשימת ספקים</a>
+    </form>
+</div>

@@ -1,0 +1,398 @@
+﻿
+
+@{
+    ViewData["Title"] = "AdminPanelLayout";
+    Layout = null;
+
+}
+<style>
+    .trycss{
+        position:relative;
+    }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>ממשק מנהל</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/assets/css/rtl/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <!-- not use this in ltr -->
+    <link href="~/assets/css/rtl/bootstrap.rtl.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="~/assets/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="~/assets/css/plugins/timeline.css" rel="stylesheet">
+
+
+    <!-- Custom CSS -->
+    <link href="~/assets/css/rtl/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="~/assets/css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="~/assets/css/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--    WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- highcharts scrpits -->
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+
+
+</head>
+
+<body>
+    <!-- d3.js CSS -->
+    
+    <!-- d3.js scrpits -->
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+
+        <nav dir="rtl" class="navbar navbar-default" role="navigation">
+
+            <div style="   position: absolute; right: 3%; ">
+                <a dir="rtl" class="navbar-brand" href="http://localhost:51220/home/index" style="right:0">החנות שלנו</a>
+
+            </div>
+
+            <!-- /.navbar-header -->
+
+            <div style="position: absolute; left: 3%; ">
+                <a href="login"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+            </div>
+
+        </nav>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation" style="position: absolute;
+    right: 2%;
+    width: 6%;">
+
+
+
+            <div class="dropdown dropleft float-right">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    מוצרים
+                </button>
+
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="http://localhost:51220/AdminPanel/Products">טבלת מוצרים</a>
+                    <a class="dropdown-item" href="http://localhost:51220/AdminPanel/createProduct">הוספת מוצר</a>
+                    <a class="dropdown-item" href="http://localhost:51220/AdminPanel/Products">עידכון פרטי מוצר</a>
+                    <a class="dropdown-item" href="http://localhost:51220/AdminPanel/Products">מחיקת מוצר</a>
+                </div>
+
+                <br>
+                <br>
+
+                <div class="dropdown dropleft float-right">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        לקוחות
+                    </button>
+                    
+
+                    <br />
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="http://localhost:51220/AdminPanel/Users">טבלת לקוחות</a>
+                        <a class="dropdown-item" href="http://localhost:51220/AdminPanel/createUser">הוספת לקוח</a>
+                        <a class="dropdown-item" href="http://localhost:51220/AdminPanel/Users">עידכון פרטי לקוח</a>
+                        <a class="dropdown-item" href="http://localhost:51220/AdminPanel/Users">מחיקת לקוח</a>
+                    </div>
+
+                    <br>
+                    <div class="dropdown dropleft float-right">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            ספקים
+                        </button>
+
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="http://localhost:51220/AdminPanel/Suppliers">טבלת ספקים</a>
+                            <a class="dropdown-item" href="http://localhost:51220/AdminPanel/createSupplier">הוספת ספק</a>
+                            <a class="dropdown-item" href="http://localhost:51220/AdminPanel/Suppliers">עידכון פרטי ספק</a>
+                            <a class="dropdown-item" href="http://localhost:51220/AdminPanel/Suppliers">מחיקת ספק</a>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- /.navbar-static-side -->
+
+
+        <div dir="rtl" id="page-wrapper" style="min-height: 564px;">
+            <div dir="rtl" class="row">
+                <div dir="rtl" class="col-lg-12">
+                    <div class="text-right">
+
+                        <h1 dir="rtl" class="page-header">ממשק מנהל</h1>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+
+                <div class="col-lg-4 col-md-5">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <i class="zmdi zmdi-hc-5x zmdi-money"></i>
+                                </div>
+                                <div class="col-xs-6 text-md-center">
+                                    <div class="huge">@ViewBag.totalEarns₪</div>
+                                    <div>כלל הרווחים באתר!</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-5">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <i class="fa fa-shopping-cart fa-5x"></i>
+                                </div>
+                                <div class="col-xs-8 text-center">
+                                    <div class="huge">@ViewBag.ordersNum</div>
+                                    <div>הזמנות שבוצעו בחנות!</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-5">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <i class=" zmdi zmdi-hc-5x zmdi-account-circle"></i>
+
+                                </div>
+                                <div class="col-xs-8 text-center">
+                                    <div class="huge">@ViewBag.usersNum</div>
+                                    <div>משתמשים באתר!</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-lg-8">
+
+                    <div class="panel panel-default">
+
+                        <div class="panel-heading">
+
+
+                            <b class="pull-right">
+                                הצגת מוצרים בחנות בחתך ע"פ סוג מוצר
+                            </b>
+                            <i class="fa fa-bar-chart-o fa-fw"></i>
+                            <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
+
+                        </div>
+
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div id="morris-area-chart"></div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+
+                            <i class="fa fa-bar-chart-o fa-fw"></i>
+                            <b class="pull-right">
+                                המוצרים הנמכרים ביותר:
+                            </b>
+
+                            <script>
+                                Highcharts.chart('container', {
+                                    chart: {
+                                        plotBackgroundColor: null,
+                                        plotBorderWidth: null,
+                                        plotShadow: false,
+                                        type: 'pie'
+                                    },
+                                    title: {
+                                        text: ''
+                                    },
+                                    tooltip: {
+                                        pointFormat: 'Category: <b>{point.percentage:.1f}%</b>'
+                                    },
+                                    plotOptions: {
+                                        pie: {
+                                            allowPointSelect: true,
+                                            cursor: 'pointer',
+                                            dataLabels: {
+                                                enabled: false
+                                            },
+                                            showInLegend: true
+                                        }
+                                    },
+
+
+                                    series: [{
+                                        data: [
+                                            @Html.Raw(ViewBag.productType)
+                                        ]
+                                    }]
+                                });
+                            </script>
+                        </div>
+
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="row">
+
+                                <div class="col-lg-12">
+
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+
+                                                    <th>מספר לקוח</th>
+                                                    <th>שם משתמש</th>
+                                                    <th>שם פרטי</th>
+                                                    <th>שם משפחה</th>
+                                                    <th>סכום הזמנה כולל</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (User user in ViewBag.users)
+                                                {
+                                                    <tr>
+
+                                                        <td>@user.ID</td>
+                                                        <td>@user.UserName</td>
+                                                        <td>@user.FirstName</td>
+                                                        <td>@user.LastName</td>
+                                                        <td>@(((Dictionary<int, double>)ViewBag.totalIds)[user.ID]) ₪</td>
+
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- /.table-responsive -->
+                                </div>
+                                <!-- /.col-lg-4 (nested) -->
+                                <div class="col-lg-8">
+
+                                </div>
+                                <!-- /.col-lg-8 (nested) -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+
+                        <!-- /.panel-heading -->
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-8 -->
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-warning fa-fw"></i>
+                            <b class="pull-right">חוסרים במלאי </b>
+                        </div>
+
+                        <!-- /.panel-heading -->
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>שם המוצר</th>
+                                        <th>מחיר המוצר פר יח'</th>
+                                        <th>מספר הספק לפנייה</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (Product prod in ViewBag.missingProducts)
+                                    {
+
+                                        <tr>
+                                            <td>@prod.ProductName</td>
+                                            <td>@prod.Price</td>
+                                            <td>@prod.SupplierID</td>
+                                        </tr>
+
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.list-group -->
+
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+                <div class="col-lg-8">
+
+                    <div class="panel panel-default">
+
+                        
+
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+            </div>
+            <!-- /.panel-heading -->
+        </div>
+        <!-- /.panel .chat-panel -->
+    </div>
+    
+
+</body>
+
+</html>

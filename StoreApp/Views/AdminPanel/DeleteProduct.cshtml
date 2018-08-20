@@ -1,0 +1,71 @@
+﻿@model StoreApp.Models.Product
+@{
+    ViewData["Title"] = "Delete";
+}
+<style>
+    div {
+        text-align: right;
+    }
+</style>
+<h2>מחיקת מוצר</h2>
+<h3>האם אתה בטוח שאתה מעוניין למחוק את המוצר?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            id
+        </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.ID)
+        </dd>
+        <dt>
+            name
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+        <dt>
+            Price
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            amount
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+        <dt>
+            type
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductType)
+        </dd>
+        <dt>
+            supplier id
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SupplierID)
+        </dd>
+        <dt>
+            image
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ImageURL)
+        </dd>
+        <dt>
+            supplier id
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+
+    <form asp-action="DeleteProduct">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="מחק מוצר" class="btn btn-default" /> |
+        <a asp-action="products">חזרה לרשימת מוצרים</a>
+    </form>
+</div>

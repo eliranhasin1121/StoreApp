@@ -1,0 +1,160 @@
+﻿
+@{
+    ViewData["Title"] = "AdminPanelLayout";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>ממשק מנהל</title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/assets/css/rtl/bootstrap.min.css" rel="stylesheet">
+
+    <!-- not use this in ltr -->
+    <link href="~/assets/css/rtl/bootstrap.rtl.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="~/assets/css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="~/assets/css/plugins/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="~/assets/css/rtl/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="~/assets/css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="~/assets/css/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+
+        <nav dir="rtl" class="navbar navbar-default" role="navigation">
+
+            <div style="   position: absolute; right: 3%; ">
+                <a dir="rtl" class="navbar-brand" href="http://localhost:51220/home/index" style="right:0">החנות שלנו</a>
+
+            </div>
+            <a class="pull-left" style="position: absolute; left: 10%;" href="http://localhost:51220/AdminPanel/Index">חזרה לממשק מנהל</a>
+       
+
+                <!-- /.navbar-header -->
+
+                <div style="position: absolute; left: 4%; ">
+                    <a href="/home/login"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                </div>  
+
+        </nav>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation" style="position: absolute;
+    right: 2%;
+    width: 6%;">
+
+
+
+            <div class="dropdown dropleft float-right">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    מוצרים
+                </button>
+
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="http://localhost:51220/AdminPanel/Products">טבלת מוצרים</a>
+                    <a class="dropdown-item" href="http://localhost:51220/AdminPanel/CreateProduct">הוספת מוצר</a>
+                    <a class="dropdown-item" href="#">עידכון פרטי מוצר</a>
+                    <a class="dropdown-item" href="#">מחיקת מוצר</a>
+                </div>
+
+                <br>
+                <br>
+
+                <div class="dropdown dropleft float-right">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                        לקוחות
+                    </button>
+
+
+                    <br />
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="http://localhost:51220/AdminPanel/Users">טבלת לקוחות</a>
+                        <a class="dropdown-item" href="http://localhost:51220/AdminPanel/CreateUser">הוספת לקוח</a>
+                        <a class="dropdown-item" href="#">עידכון פרטי לקוח</a>
+                        <a class="dropdown-item" href="#">מחיקת לקוח</a>
+                    </div>
+
+                    <br>
+                    <div class="dropdown dropleft float-right">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            ספקים
+                        </button>
+
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="http://localhost:51220/AdminPanel/Suppliers">טבלת ספקים</a>
+                            <a class="dropdown-item" href="http://localhost:51220/AdminPanel/CreateSupplier">הוספת ספק</a>
+                            <a class="dropdown-item" href="#">עידכון פרטי ספק</a>
+                            <a class="dropdown-item" href="#">מחיקת ספק</a>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- /.navbar-static-side -->
+
+
+        <div dir="rtl" id="page-wrapper" style="min-height: 564px;">
+            <div dir="rtl" class="row">
+
+                <!-- /.panel -->
+                
+                <div class="col-xs-12 .col-sm-6 .col-lg-8">
+                    @RenderBody()
+                    <!-- /.panel-body -->
+                </div>
+               
+                <!-- /.panel -->
+            </div>
+
+
+
+        </div>
+
+        <!-- /.panel-footer -->
+    </div>
+</body>
+
+</html>

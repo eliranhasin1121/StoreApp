@@ -1,0 +1,38 @@
+﻿body {
+    display: flex;
+    &::before
+
+{
+    content: 'Just draw';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font: bold 50px/1 Arial, sans-serif;
+    text-transform: uppercase;
+    color: #DDD;
+}
+
+}
+
+canvas {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+#blendModes {
+    position: absolute;
+    z-index: 2;
+    top: 20px;
+    right: 20px;
+    font-size: 16px;
+}
+
+#clear {
+    position: absolute;
+    z-index: 2;
+    bottom: 20px;
+    right: 20px;
+    font-size: 16px;
+}

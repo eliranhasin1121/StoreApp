@@ -1,0 +1,83 @@
+﻿@model IEnumerable<StoreApp.Models.Supplier>
+
+@{
+    ViewData["Title"] = "Suppliers";
+    Layout = "~/Views/Shared/AdminPanelLayout.cshtml";
+}
+<style>
+    div {
+        text-align: right;
+    }
+</style>
+<head>
+    <script src="~/js/adminPanel/supplierSearch.js"></script>
+</head>
+<h2>רשימת ספקים</h2>
+
+<p>
+    <a asp-action="CreateSupplier">הכנס ספק חדש</a>
+</p>
+<p>
+    <b>חיפוש ספק</b>
+    <br /><br />
+    <input id="supId" type="number" value="" />
+    <input type="submit" id="sup-search" value="שלח" />
+    <input type="hidden" id="len" value="0" />
+
+
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                מספר ספק:
+            </th>
+            <th>
+                שם ספק:
+            </th>
+            <th>
+                טלפון ספק:
+            </th>
+            <th>
+               כתובת ספק:
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                <a asp-action="EditSupplier" asp-route-id="@item.ID">ערוך פרטי ספק</a> |
+                <a asp-action="SupplierDetails" asp-route-id="@item.ID">פרטי ספק</a> |
+                <a asp-action="DeleteSupplier" asp-route-id="@item.ID">מחיקת ספק</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div class="card">
+    <table class="table table-hover shopping-cart-wrap" id="productable">
+        <thead class="text-muted">
+            <tr id="col-1">
+                <th scope="col">מספר ספק </th>
+                <th scope="col">שם הספק</th>
+                <th scope="col">כתובת</th>
+                <th scope="col">מס' טלפון</th>
+            </tr>
+        </thead>
+    </table>
+</div>

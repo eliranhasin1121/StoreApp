@@ -1,0 +1,41 @@
+﻿@model StoreApp.Models.Supplier
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    div {
+        text-align: right;
+    }
+</style>
+<h2>עריכת פרטי ספק</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditSupplier">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label class="control-label">שם ספק</label>
+                <input asp-for="CompanyName" class="form-control" />
+                <span asp-validation-for="CompanyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">מספר טלפון</label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">כתובת ספק</label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="עדכן פרטים" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="suppliers">חזרה לרשימת ספקים</a>
+</div>

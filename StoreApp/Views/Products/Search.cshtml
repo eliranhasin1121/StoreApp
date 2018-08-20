@@ -1,0 +1,163 @@
+﻿@model IEnumerable<StoreApp.Models.Supplier>
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Views/Shared/ProductsLayout.cshtml";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="~/js/searchBySupplier.js"></script>
+<script src="~/js/searchByType.js"></script>
+<script src="~/js/adminPanel/searchBySupplier2.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.css">
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.js"></script>
+
+
+<aside>
+    <br />
+    <br />
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <label class="mr-sm-2" for="product inlineFormCustomSelect">סוג המוצר:</label>
+                <select id="product" class="custom-select mb-2 mr-sm-2 mb-sm-0" style="width: 80px; height: 30px">
+                    <option value="meat">Meat</option>
+                    <option value="milk">Milk</option>
+                    <option value="general">General</option>
+                    <option value="vegetable">Vegterbale</option>
+                </select>
+
+                <br />
+                <br />
+                <label for="min">מחיר מינימלי:</label>
+                <input type="number" id="min" placeholder="מחיר מינימלי" value="" />
+                <br />
+                <br />
+                <label for="max">מחיר מקסימלי:</label>
+                <input type="number" id="max" placeholder="מחיר מקסימלי" value="" />
+                <br />
+                <br />
+                <center>
+                    <button type="submit" id="btn-search" class="btn btn-primary" style="width:60px; height:30px; padding-bottom:10px ; font-size:15px" data-toggle="button" aria-pressed="false" autocomplete="off">
+                        חפש
+                    </button>
+                </center>
+                <input type="hidden" id="len" value="0" />
+            </div>
+
+            <!--11-->
+
+            <div class="col-sm">
+                <label class="mr-sm-2" for="product inlineFormCustomSelect">כתובת הספק:</label>
+                <select id="sup-address" class="custom-select mb-2 mr-sm-2 mb-sm-0" style="width: 80px; height: 30px">
+                    @foreach (var item in Model)
+                       {
+                <option value="@item.Address">@item.Address</option>
+    
+                        }
+    
+                </select>
+
+                <br />
+                <br />
+                <label for="phone">מס' טלפון:</label>
+                <input type="text" id="phone" placeholder="phone number" value="" />
+                <br />
+                <br />
+                <label for="prod">שם המוצר:</label>
+                <input type="text" id="prod" placeholder="שם המוצר" value="" />
+                <br />
+                <br />
+                <center>
+                    <button type="submit" id="btn-search4" class="btn btn-primary" style="width:60px; height:30px; padding-bottom:10px ; font-size:15px" data-toggle="button" aria-pressed="false" autocomplete="off">
+                        חפש
+                    </button>
+                </center>
+                <input type="hidden" id="len" value="0" />
+            </div>
+
+            <!--11-->
+            <div class="col-sm">
+                <label for="product2">סוג המוצר:</label>
+                <select id="product2">
+                    <option value="meat">Meat</option>
+                    <option value="milk">Milk</option>
+                    <option value="general">General</option>
+                    <option value="vegetable">Vegterbale</option>
+                </select>
+                <br />
+                <br />
+                <label for="supplier">שם ספק:</label>
+                <select class="mdb-select colorful-select dropdown-primary" id="supplier">
+                    @foreach (var item in Model)
+                    {
+                        <option value="@item.CompanyName">@item.CompanyName</option>
+
+                    }
+                </select>
+                <br />
+                <div class="col-sm">
+                    <div class="ui search" style="margin-bottom: 20px">
+                        <label for="partName">שם המוצר:</label>
+                        <input class="prompt" type="text" id="partName" placeholder="הזן שם מוצר">
+                        <input type="hidden" id="len" value="0" />
+                        <center>
+                            <br />
+                            <div class="results"></div>
+
+                        </center>
+                        <input type="hidden" id="len" value="0" />
+                        <center>
+                            <button type="submit" id="btn-search3" class="btn btn-primary" style="width:60px; height:30px; padding-bottom:10px ; font-size:15px" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                חפש
+                            </button>
+                        </center>
+                        <br />
+                        <br />
+                        <br />
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+          
+
+        
+        <div>
+        </div>
+</aside>
+<center>
+    <div>
+
+    </div>
+</center>
+<aside></aside>
+<div class="card">
+    <table class="table table-hover shopping-cart-wrap" id="productable">
+        <thead class="text-muted">
+            <tr id="col-1">
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Type</th>
+                <th scope="col">Price</th>
+                <th scope="col">Supplier</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+<div class="card">
+    <table class="table table-hover shopping-cart-wrap" id="suptable">
+        <thead class="text-muted">
+            <tr id="col-1">
+                <th scope="col">Company Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">product Name</th>
+                <th scope="col">Item Exsist</th>
+            </tr>
+        </thead>
+    </table>
+</div>

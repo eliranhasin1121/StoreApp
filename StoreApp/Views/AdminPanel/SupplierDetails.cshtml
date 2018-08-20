@@ -1,0 +1,46 @@
+﻿@model StoreApp.Models.Supplier
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    div {
+        text-align: right;
+    }
+</style>
+<h2>Details</h2>
+<div>
+    <h4>ספק</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            מספר ספק:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+        <dt>
+            שם ספק:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CompanyName)
+        </dd>
+        <dt>
+            מס' טלפון:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            כתובת ספק:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="EditSupplier" asp-route-id="@Model.ID">ערוך פרטי ספק</a> |
+    <a asp-action="suppliers">חזור לרשימת ספקים</a>
+</div>

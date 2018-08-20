@@ -1,0 +1,64 @@
+﻿@model StoreApp.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+<style>
+    div {
+        text-align: right;
+    }
+</style>
+<h2>פרטי מוצר</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           שם המוצר
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+        <dt>
+           כמות במלאי
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+        <dt>
+           סוג מוצר
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductType)
+        </dd>
+        <dt>
+           מחיר ליחידה
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+          תמונה מהקטלוג
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ImageURL)
+        </dd>
+
+        <dt>
+            תיאור מוצר
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            מספר ספק
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SupplierID)
+        </dd>
+       
+    </dl>
+</div>
+<div>
+    <a asp-action="EditProduct" asp-route-id="@Model.ID">ערוך פרטי משתמש</a> |
+    <a asp-action="products">חזרה לרשימת מוצרים</a>
+</div>

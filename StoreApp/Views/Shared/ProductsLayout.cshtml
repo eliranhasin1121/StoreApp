@@ -1,0 +1,57 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/buttons.css"> <!-- Resource style -->
+<link rel="stylesheet" href="~/css/cart.css"> <!-- Resource style -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="~/css/layoutCss.css" />
+
+
+
+<div style="text-align:center">
+    <form action="">
+        <button class="btn btn-primary" style="font-size: 15px; width: 80px; height:40px" formaction="/Products/index">הכל</button>
+        <button class="btn btn-secondary" style="font-size: 15px; width: 80px; height:40px" formaction="/Products/milk">חלב</button>
+        <button class="btn btn-danger" style="font-size: 15px; width: 80px; height:40px" formaction="/Products/meat">בשר</button>
+        <button class="btn btn-success" style="font-size: 15px; width: 80px; height:40px" formaction="/Products/vegatable">ירקות</button>
+        <button class="btn btn-info" style="font-size: 15px; width: 80px; height:40px" formaction="/Products/general">כללי</button>
+        <button class="btn btn-warning" style="font-size: 15px; width: 80px; height:40px" formaction="/Products/Search">חיפוש</button>
+    </form>
+</div>
+@RenderBody()
+<div class="cd-cart-container empty">
+    <a href="#0" class="cd-cart-trigger">
+        עגלה
+        <ul class="count">
+            <!-- cart items count -->
+            <li>0</li>
+            <li>0</li>
+        </ul> <!-- .count -->
+    </a>
+    <div class="cd-cart">
+        <div class="wrapper">
+            <header>
+                <h2>עגלה:</h2>
+                <span class="undo">המוצר הוסר . <a href="#0" style="padding-left:10px;">החזר!</a></span>
+            </header>
+
+            <div class="body">
+                <ul></ul>
+            </div>
+            <footer>
+                <a href="#0" class="checkout" style="font-size:16px; text-decoration: underline;"<em>סיכום הזמנה :<span>0</span></em> ₪</a>
+            </footer>
+        </div>
+    </div> <!-- .cd-cart -->
+    <div class="wrapButtons">
+        <button class="btn" style="padding: 0px" id="toggleMyCart">הצג / הסתר עגלה</button>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+    if (!window.jQuery) document.write('<script src="js/jquery-3.0.0.min.js"><\/script>');
+</script>
+<script src="~/js/cart.js"></script> <!-- Resource CartJS -->

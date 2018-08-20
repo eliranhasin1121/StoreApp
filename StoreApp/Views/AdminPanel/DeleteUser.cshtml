@@ -1,0 +1,58 @@
+﻿@model StoreApp.Models.User
+@{
+    ViewData["Title"] = "Delete";
+}
+<style>
+    div {
+        text-align: right;
+    }
+</style>
+<h2>מחיקת משתמש</h2>
+<h3>האם אתה בטוח שאתה מעוניין למחוק את המשתמש?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            שם פרטי:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            שם משפחה:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            שם משתמש:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt>
+            סיסמא:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt>
+            אי-מייל:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mail)
+        </dd>
+        <dt>
+            האם מנהל:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsAdmin)
+        </dd>
+    </dl>
+
+    <form asp-action="DeleteUser">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="מחק משתמש" class="btn btn-default" /> |
+        <a asp-action="users">חזרה לרשימת משתמשים</a>
+    </form>
+</div>

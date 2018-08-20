@@ -1,0 +1,114 @@
+﻿
+@model IEnumerable<StoreApp.Models.Product>
+@{
+    ViewData["Title"] = "Products";
+    Layout = "~/Views/Shared/AdminPanelLayout.cshtml";
+}
+<style>
+    div {
+        text-align: right;
+    }
+</style>
+<head>
+    <script src="~/js/adminPanel/prodSearch.js"></script>
+</head>
+<h2>מלאי מוצרי החנות</h2>
+
+<p>
+    <a asp-action="CreateProduct">הכנס מוצר חדש</a>
+</p>
+
+<p>
+    <b>חיפוש מוצר</b>
+    <br /><br />
+    <input id="prodId" type="number" value="" />
+    <input type="submit" id="prod-search" value="שלח" />
+    <input type="hidden" id="len" value="0" />
+
+
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               מספר מוצר:
+            </th>
+            <th>
+               שם מוצר:
+            </th>
+            <th>
+                כמות במלאי:
+            </th>
+            <th>
+                סוג מוצר:
+            </th>
+            <th>
+               מחיר מוצר:
+            </th>
+            
+            <th>
+               תיאור מוצר:
+            </th>
+            <th>
+                מספר ספק:
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SupplierID)
+                </td>
+
+                <td>
+                    <a asp-action="EditProduct" asp-route-id="@item.ID">ערוך פרטי מוצר</a> |
+                    <a asp-action="ProductDetails" asp-route-id="@item.ID">פרטי מוצר</a> |
+                    <a asp-action="DeleteProduct" asp-route-id="@item.ID">מחיקת מוצר</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+<br />
+<div class="card">
+    <table class="table table-hover shopping-cart-wrap" id="productable">
+        <thead class="text-muted">
+            <tr id="col-1">
+                <th scope="col">מספר מוצר</th>
+                <th scope="col">שם מוצר</th>
+                <th scope="col">סוג מוצר</th>
+                <th scope="col">כמות במלאי</th>
+                <th scope="col">מחיר פר' יחידה</th>
+                <th scope="col">תיאור מוצר</th>
+                <th scope="col">מספר ספק</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+

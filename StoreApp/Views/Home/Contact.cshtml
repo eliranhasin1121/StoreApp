@@ -1,0 +1,170 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Contact";
+}
+<style>
+    #map_canvas {
+        display: none;
+    }
+</style>
+<center>
+    <br />
+    <br />
+    <h2 style="font-family:'Suez One', serif;">בואו לבקר אותנו בסניפים שלנו !</h2>
+    <i class="subway icon" style="font-size:40px;"></i>
+    <p style="font-family:'Varela Round', serif; font-size: 18px;">
+        סניף המכללה למנהל רחוב יצחק רבין ראשון לציון<br />
+        סניף אחד העם 21 ראשון לציון
+    </p>
+    <div style="height:100%; width:100%; position:center; text-align:center;">
+        <center>
+            <div class="ui piled segment" id="map_canvas" style=" position:center; width:600px; height:400px;"></div>
+        </center>
+    </div>
+    <br />
+
+    <div class="ui massive message" style="text-align:center;">
+        <p style="font-family:'Varela Round', serif; font-size: 18px;">
+            נשמח לעמוד לרשותכם.
+            <br />
+            טלפון להזמנות : 0503673664
+            <br />
+            מייל : eliranEliranSeanAviv@gmail.com
+        </p>
+    </div>
+<h1>משחק ציורים לילדים שלכם</h1>
+</center>
+<canvas id="canvas"></canvas>
+
+<select name="blendModes" id="blendModes">
+    <option value="normal">normal</option>
+    <option value="multiply">multiply</option>
+    <option value="screen">screen</option>
+    <option value="overlay">overlay</option>
+    <option value="darken">darken</option>
+    <option value="lighten">lighten</option>
+    <option value="color">color-dodge</option>
+    <option value="color">color-burn</option>
+    <option value="hard">hard-light</option>
+    <option value="soft">soft-light</option>
+    <option value="difference" selected>difference</option>
+    <option value="exclusion">exclusion</option>
+    <option value="hue">hue</option>
+    <option value="saturation">saturation</option>
+    <option value="color">color</option>
+    <option value="luminosity">luminosity</option>
+</select>
+
+<button id="clear">Clear</button>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+
+    const canvas = document.querySelector('#canvas');
+    const ctx = canvas.getContext('2d');
+    const modesSwitcher = document.querySelector('#blendModes');
+    const clearButton = document.querySelector('#clear');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    ctx.strokeStyle = 'orange';
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+    let hue = 0;
+    let lineWidth = 1;
+    ctx.globalCompositeOperation = 'difference';
+
+    function draw(e) {
+        if (!isDrawing) {
+            return;
+        }
+
+        ctx.strokeStyle = getColor();
+        ctx.lineWidth = getlineWidth();
+
+        ctx.beginPath();
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    }
+
+    function getColor() {
+        hue++;
+        if (hue == 360) {
+            hue = 0;
+        }
+        return 'hsl(' + hue + ', 100%, 50%)';
+    }
+
+    function getlineWidth() {
+        lineWidth++;
+        if (lineWidth > 100) {
+            lineWidth = 1;
+        }
+        return lineWidth;
+    }
+
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mousedown', (e) => {
+        isDrawing = true;
+        [lastX, lastY] = [e.offsetX, e.offsetY];
+    });
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mouseout', () => isDrawing = false);
+
+    function changeMode() {
+        ctx.globalCompositeOperation = this.value;
+    }
+
+    modesSwitcher.addEventListener('change', changeMode);
+
+    function clear() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    clearButton.addEventListener('click', clear);
+
+
+
+</script>
+
+
+<script>
+    function displayMap() {
+        document.getElementById('map_canvas').style.display = "block";
+        initialize();
+    }
+    function initialize() {
+        // create the map
+        var myOptions = {
+            zoom: 12,
+            center: new google.maps.LatLng(31.968360, 34.788274),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        var position1 = new google.maps.Marker({
+            position: new google.maps.LatLng(31.968895, 34.772840),
+            title: "סניף המכללה למנהל"
+        });
+        position1.setMap(map);
+
+        var position2 = new google.maps.Marker({
+            position: new google.maps.LatLng(31.962513, 34.807691),
+            title: "סניף אחר שלנו"
+        });
+        position2.setMap(map);
+    }
+    window.onload = displayMap;
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHfrMCGKVV-wfWMLlkT8nwewHedtQQEhE&callback=initMap"
+        async defer></script>

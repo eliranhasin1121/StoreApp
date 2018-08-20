@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "productPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var item = Model[0];
+    var amount = item.Amount;
+    var desc = item.Description;
+    var name = item.ProductName;
+    var img = item.ImageURL;
+    var price = item.Price;
+    var productId = item.ID;
+    var type = item.ProductType;
+}
+<link rel="stylesheet" href="~/css/bibaStyle.css">
+<h1 class="h1Edit"><H>דף המוצר</H></h1>
+<h2 class="h2Edit">@name</h2>
+<br/>
+<br/>
+<table  class="leftToRight">
+    <tr>
+        <td class="s">
+            <img class="productPageImg" src="~/images/products/@type/@img">
+        </td>
+        <td>
+            <table class="leftToRight">
+                <tr class="textRight">
+                    <td class="empty"></td>
+                    <td><strong>@price</strong></td>
+                    <td class="b"><strong>מחיר:</strong></td>
+                </tr>
+                <tr class="textRight">
+                    <td class="empty"></td>
+                    <td><strong>@desc</strong></td>
+                    <td class="b"><strong>תיאור המוצר:</strong></td>
+                </tr>
+                <tr class="textRight">
+                    <td class="empty"></td>
+                    <td><strong>@amount</strong></td>
+                    <td class="b"><strong>כמות במלאי:</strong></td>
+                </tr>
+                <tr class="textRight">
+                    <td class="empty"></td>
+                    <td><strong>@type</strong></td>
+                    <td class="b"><strong>סוג המוצר:</strong></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+        
+        
+
+
+
